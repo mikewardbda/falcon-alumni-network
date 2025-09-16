@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcon College Alumni Network</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Falcon College Alumni Network</h1>
+            <img src="falcon_college_logo.png" alt="Falcon College Logo" class="logo">
+        </div>
+        <nav>
+            <a href="#" id="home-link" class="active">Home</a>
+            <a href="#" id="events-link">Events</a>
+            <a href="#" id="resources-link">Resources</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search alumni...">
+            <button id="searchButton">Search</button>
+        </div>
+    </header>
+    <main>
+        <div id="tree-container-wrapper">
+            <button id="backButton" style="display: none;">Back to Full Tree</button>
+            <div id="tree-container">
+                </div>
+        </div>
+        <aside id="alumni-details-sidebar">
+            <h2>Alumni Details</h2>
+            <p>Click on a job title to see alumni details.</p>
+        </aside>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
