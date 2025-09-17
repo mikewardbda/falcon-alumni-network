@@ -3,159 +3,146 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
 }
 
 header {
-    background-color: #003E7E;
-    color: #fff;
-    padding: 10px 20px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; 
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px; 
-}
-
-h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.logo {
-    height: 60px; 
-    width: auto; 
-    background-color: white; 
-    padding: 5px; 
-    border-radius: 5px; 
-}
-
-header nav {
-    flex: 1;
+    background-color: #004d99;
+    color: white;
+    padding: 1rem;
     text-align: center;
-    margin: 0 20px;
-}
-
-header nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 15px;
-    margin: 0 5px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-header nav a:hover, header nav a.active {
-    background-color: #002e5c;
 }
 
 main {
     display: flex;
-    flex: 1;
-    overflow: hidden;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
 }
 
-.search-bar {
+#controls {
+    position: absolute;
+    top: 100px;
+    left: 20px;
     display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-#searchInput {
-    padding: 8px;
-    font-size: 14px;
+#search-container input,
+#search-container button,
+#backButton,
+#showHeatmapButton {
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-#searchButton {
-    padding: 8px 15px;
     font-size: 14px;
     cursor: pointer;
-    background-color: #003E7E;
-    color: white;
-    border: none;
-    border-radius: 4px;
 }
 
-#tree-container-wrapper {
-    flex: 3;
-    position: relative;
-    overflow: auto;
+#search-container button,
+#backButton,
+#showHeatmapButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+#search-container button:hover,
+#backButton:hover,
+#showHeatmapButton:hover {
+    background-color: #0056b3;
+}
+
+#tree-container {
+    border: 1px solid #ccc;
     background-color: #fff;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    min-width: 1200px;
+    min-height: 800px;
+    position: relative;
 }
 
-#tree-container-wrapper #backButton {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background-color: #003E7E;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    z-index: 10;
-}
-
-#alumni-details-sidebar {
-    flex: 1;
-    background-color: #e6e6fa;
-    padding: 20px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-}
-
-#alumni-details-sidebar h2 {
-    color: #003E7E;
-    border-bottom: 2px solid #003E7E;
-    padding-bottom: 10px;
-    margin-top: 0;
-}
-
-.profile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    border: 3px solid #003E7E;
-    object-fit: cover; 
-}
-
-.profile-info p {
-    margin: 5px 0;
-}
-
-/* D3.js specific styling for the tree diagram */
 .node circle {
     fill: #999;
-    stroke: #003E7E;
+    stroke: steelblue;
     stroke-width: 3px;
-    transition: stroke-width 0.2s;
-}
-
-.node circle.found {
-    stroke: #ff9900;
-    stroke-width: 5px;
+    cursor: pointer;
 }
 
 .node text {
     font: 12px sans-serif;
-    fill: #555;
-    text-anchor: middle;
+}
+
+.node--internal text {
+    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+
+.node--leaf text {
+    font-size: 12px;
 }
 
 .link {
     fill: none;
     stroke: #ccc;
     stroke-width: 2px;
+}
+
+.found {
+    fill: red !important;
+}
+
+#alumni-details-sidebar {
+    width: 300px;
+    margin-left: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+#heatmap-container {
+    display: none; /* Hidden by default */
+    width: 1200px;
+    height: 800px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    padding: 20px;
+}
+
+.country {
+    stroke: #fff;
+    stroke-width: 1px;
+    fill: #ccc;
 }
